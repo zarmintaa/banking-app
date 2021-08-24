@@ -371,7 +371,7 @@ movements.sort((a,b) => {
   if (a > b) return 1;
   if (b > a) return -1;
 })
-console.log(movements);
+// console.log(movements);
 
 // Descending
 movements.sort((a,b) => {
@@ -379,11 +379,21 @@ movements.sort((a,b) => {
   if (b > a) return 1;
 })
 
-console.log(movements);
+// console.log(movements);
 
 movements.sort((a,b) => a - b);
-console.log(movements);
+// console.log(movements);
 
 
 movements.sort((a,b) => b - a);
-console.log(movements);
+// console.log(movements);
+
+const z = Array.from({length: 100}, (_, i) =>  Math.trunc(Math.random() * 6 + 1) );
+console.log(z);
+
+
+labelBalance.addEventListener('click', () => {
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'), el => Number(el.textContent.replace('🇪🇺', '')));
+  // movementsUI.map((el => el.textContent.replace('🇪🇺', '')));
+  console.log(movementsUI);
+});
