@@ -6,7 +6,7 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Jason Smith',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -110,8 +110,7 @@ const calcDisplaySummary = acc => {
 
 
 
-// get username from full name, which using first letter from each name
-
+// get username from full name, which using first letter from each nam
 const createUsernames = (accs) => {
   accs.forEach(acc => {
     acc.username = acc.owner
@@ -126,7 +125,6 @@ createUsernames(accounts);
 // console.log(accounts)
 
 // event handler
-
 const clearInputFields = () => {
   inputLoginUsername.value = '';
   inputLoginPin.value = '';
@@ -213,187 +211,3 @@ btnSort.addEventListener('click', (e) => {
 
 ////////////////////////////////////////
 ////////////////////////////////////////
-
-////////////////////////////////////////
-////////////////////////////////////////
-
-
-
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-const deposits = movements.filter((mov) => {
-  return mov > 0
-})
-
-const withdrawls = movements.filter(mov => mov < 0);
-
-// console.log(deposits)
-// console.log(withdrawls)
-//
-// console.log(movements)
-
-// const balance = movements.reduce((acc, cur, i) => {
-//   console.log(`iteration ${i}: ${acc} : ${cur}`)
-//   return acc + cur
-// }, 0)
-
-let balance2 = 0;
-movements.forEach(value => balance2 += value)
-
-// console.log(balance)
-// console.log(balance2)
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
-
-
-
-/////////////////////////////////////////////////
-
-// const eurToUsd = 1.1;
-//
-// const movementUsd = movements.map(mov =>  mov * eurToUsd)
-//
-// console.log(movementUsd)
-
-/*
-
-const checkDogs = (dogsJulia, dogsKate) => {
-  const dogsJuliaCorrected = dogsJulia.slice();
-  dogsJuliaCorrected.splice(0, 1);
-  dogsJuliaCorrected.splice(-2);
-  const dogs = dogsJuliaCorrected.concat(dogsKate);
-  dogs.forEach((dog, i) => {
-    if (dog >= 3) {
-      console.log(`Dog number ${i} is an adult, an is ${dog} years old`)
-    } else {
-      console.log(`Dog number ${i} is a puppy, an is ${dog} years old`)
-    }
-  })
-}
-
-// [3,5,12,7] >< [4,1,15,0,3]
-
-checkDogs([3,5,12,7], [4,1,15,0,3])
-
-
-*/
-
-// const movementDescriptions = movements.map((mov, i) => {
-//   return `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${mov}`
-// });
-//
-// console.log(movementDescriptions)
-
-
-// MAX VAlue with reduce
-
-// const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0]);
-// console.log(max)
-
-const data1 = [5,2,4,1,15,8,3];
-const data2 = [16,6,10, 5,6,1,4];
-
-const calcAverageHumanAge = (ages) => {
-  const humanAges = ages.map(age => age <= 2 ? 2 * age : 16 + age * 4);
-  const adults = humanAges.filter(age => age >= 18);
-  // return adults.reduce((acc, cur) => acc + cur, 0)/adults.length
-  return adults.reduce((acc, cur,i,arr) => acc + cur/arr.length, 0)
-}
-
-const calcAverageHumanAge2 = ages =>
-    ages.map(age => age <= 2 ? 2 * age : 16 + age * 4)
-    .filter(age => age >= 18)
-    .reduce((acc, cur, i, arr) => acc + cur/arr.length, 0)
-
-// console.log(Math.abs(calcAverageHumanAge2(data1)))
-
-const eurToUsd = 1.1
-const totalDepositUSD = movements
-    .filter(mov => mov > 0)
-    .map(mov => mov * eurToUsd)
-    .reduce((acc, mov) => acc + mov, 0);
-
-// console.log(totalDepositUSD)
-
-const firstWithDrawal = movements.find(mov => mov < 0)
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-
-// console.log(firstWithDrawal)
-// console.log(account)
-
-
-// console.log(movements);
-// console.log(movements.includes(-130));
-
-const myDeposits = movements.some(mov => mov > 0)
-// console.log(myDeposits);
-
-const deposit = mov => mov > 0;
-
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
-
-const arr = [[1,2,3], [4,5,6], 7,8];
-const arrDeep = [[[1,2],3], [4,[5,6]], 7,8];
-// console.log(arr.flat());
-// console.log(arrDeep.flat(2));
-
-
-const overallBalance = accounts
-  .map(acc => acc.movements)
-  .flat()
-  .reduce((acc, mov) => acc + mov, 0);
-// console.log(overallBalance);
-
-const overallBalance2 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acc, mov) => acc + mov);
-
-// console.log(overallBalance2);
-
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort());
-
-// return < 0, A, B = keep order
-// return > 0, A, B = switch order
-
-// Ascending
-movements.sort((a,b) => {
-  if (a > b) return 1;
-  if (b > a) return -1;
-})
-// console.log(movements);
-
-// Descending
-movements.sort((a,b) => {
-  if (a > b) return -1;
-  if (b > a) return 1;
-})
-
-// console.log(movements);
-
-movements.sort((a,b) => a - b);
-// console.log(movements);
-
-
-movements.sort((a,b) => b - a);
-// console.log(movements);
-
-const z = Array.from({length: 100}, (_, i) =>  Math.trunc(Math.random() * 6 + 1) );
-console.log(z);
-
-
-labelBalance.addEventListener('click', () => {
-  const movementsUI = Array.from(document.querySelectorAll('.movements__value'), el => Number(el.textContent.replace('🇪🇺', '')));
-  // movementsUI.map((el => el.textContent.replace('🇪🇺', '')));
-  console.log(movementsUI);
-});
