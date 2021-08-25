@@ -154,6 +154,7 @@ btnLogin.addEventListener('click', (e) => {
     // clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+    console.log(currentAccount);
 
     updateUi(currentAccount);
   }
@@ -203,6 +204,12 @@ let sortStatus = false;
 btnSort.addEventListener('click', (e) => {
   e.preventDefault();
   displayMovement(currentAccount.movements, sortStatus = !sortStatus);
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  currentAccount = accounts[0];
+  labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+  updateUi(currentAccount);
 })
 
 
